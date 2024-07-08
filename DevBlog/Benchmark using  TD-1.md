@@ -1,14 +1,10 @@
 
 TD-1 Original Readings of testing filaments
 
-| Colour  | TD  | Colour   |
-| ------- | --- | -------- |
-| Purple  | 4.9 | 93 C6 CB |
-| Purple  | 4.8 | 94 C9 CE |
-| Magenta | 3.2 | E8 7D AD |
-| Magenta | 3.2 | EA 84 B3 |
-| Pink    | 6.7 | FF A6 A8 |
-| Pink    | 6.6 | FF A7 AB |
-| Beige   | 3.5 | FF FF FF |
-| Black   | 0.2 | 10 3C 1C |
-| Black   | 0.1 | 11 3D 1D |
+| Filament | TD-1 | Colour TD-1 | NewTD | NewColour | ObjectiveTD | Image                                           | PS     | Note                                      |
+| -------- | ---- | ----------- | ----- | --------- | ----------- | ----------------------------------------------- | ------ | ----------------------------------------- |
+| Green    | 4.9  | FFFFBF      | 4.8   | C8FF3C    | 4.8         | ![](Images/CleanShot%202024-07-08%20at%2011.39.37.png) | CFDD4A | Minor G/B Hue                             |
+| Purple   | 4.8  | 90C8CC      | 4.8   | 3C5082    | 4.8         | ![](Images/CleanShot%202024-07-08%20at%2011.39.52.png) | 434880 | Filament DOES darken after printing, Good |
+| Black    | 0.1  | 113D1D      | 0.0   | 030704    | 0.08        |                                                 | 020108 | Good                                      |
+| Beige    | 3.5  | FFFFFF      | 2.5   | DEFFAA    | UNTESTED    |                                                 | FEFAB7 | Massive Green Hue                         |
+``

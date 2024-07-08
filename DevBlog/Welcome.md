@@ -39,5 +39,10 @@ Getting the Hardware Working
 
 ## Day 2  
 Making the Outputs valid, and validating  
-This stage may take a while due to test prints.
+This stage may take a while due to test prints, and analysis
+
+I am releasing now, despite a LOT more to go in regards to calibration, so that there is something more usable. 
+
+AJAX has contacted me after seeing my reddit post, and is away of this repo. 
+
 

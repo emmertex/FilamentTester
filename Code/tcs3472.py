@@ -19,7 +19,7 @@ class TCS3472:
         # Power on and enable the sensor
         self.i2c.writeto(ADDR, b'\x80\x03')
         # Set integration time to 101 ms (0x2B)
-        self.i2c.writeto(ADDR, b'\x81\x2b')
+        self.i2c.writeto(ADDR, b'\x81\x2B')
         # Set Gain
         self.i2c.writeto(ADDR, b'\x0F\x01')
         print("Sensor enabled with integration time 0x2B")
@@ -30,6 +30,7 @@ class TCS3472:
         red, green, blue component values as bytes (0-255).
         """
         clear, r, g, b = self.raw()
+        print("Raw {} {} {} {}".format(r, g, b, clear))
 
         # Avoid divide by zero errors ... if clear = 0 return black
         if clear == 0:
@@ -38,14 +39,14 @@ class TCS3472:
         # Each color value is normalized to clear, to obtain int values between 0 and 255.
         # A gamma correction of 2.5 is applied to each value as well, first dividing by 255,
         # since gamma is applied to values between 0 and 1
-        red = int(pow((int((r / clear) * 256) / 255), 2.25) * 255)
+        red = int(pow((int((r / clear) * 256) / 255), 2.3) * 255)
         green = int(pow((int((g / clear) * 256) / 255), 2.2) * 255)
-        blue = int(pow((int((b / clear) * 256) / 255), 2.25) * 255)
+        blue = int(pow((int((b / clear) * 256) / 255), 2.3) * 255)
 
         # Handle possible 8-bit overflow
-        red = min(red, 255) + 3
-        green = min(green, 255) - 17
-        blue = min(blue, 255)
+        red = min(red, 255) + 3 
+        green = min(green, 255) - 12 # Offset is only half the issue
+        blue = min(blue, 255) 
         
         ir = (red+green+blue-clear) / 2 if (red+green+blue > clear) else 0.0
         r2 = red - ir
@@ -54,10 +55,10 @@ class TCS3472:
     
         lux = 0.136 * r2 + g2 + -.44 * b2
         
-        maximum = 16000
+        maximum = 14000
         minimum = 3500
         minmax = maximum-minimum
-        scale = (((clear - minimum) / minmax)+0.1)*16
+        scale = (((clear - minimum) / minmax)+0.1)*12
         
         red = int(min(max((red * scale), 0), 255))
         green = int(min(max((green * scale), 0), 255))
@@ -73,3 +74,5 @@ class TCS3472:
         self.i2c.writeto(ADDR, b'\xb4')
         data = self.i2c.readfrom(ADDR, 8)
         return struct.unpack("<HHHH", data)
+
+
