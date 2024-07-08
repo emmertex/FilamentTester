@@ -1,6 +1,6 @@
 
 Now read Intensity with Beige, confirmed to be 3.5 by HueForge Creator
-![[Images/CleanShot 2024-07-08 at 09.51.08.png]]
+![](Images/CleanShot%202024-07-08%20at%2009.51.08.png)
 
 ```python
 import machine
